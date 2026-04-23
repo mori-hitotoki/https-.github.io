@@ -284,13 +284,21 @@ footer {
         font-size: 12px;
         margin: 5px 0;
     }
-    .card.wide {
-        width: 100%;
+    .card.wide img{
+        max-width: 100%;
     }
     .card img {
         height: 120px;
         object-fit: cover;
     }
+    .food {
+    grid-template-columns: 1fr !important;
+}
+
+.food .card.wide {
+    width: 100%;
+}
+
     /* QRコード */
     .qr {
         width: 100%;
@@ -419,7 +427,7 @@ footer {
         <p>森のひとときで贅沢を</p>
 </div>
 
-<div class="grid">
+<div class="grid food">
     <div class="card wide">
         <img src="朝食.jpg">
         <h3>朝食</h3>
@@ -509,7 +517,7 @@ footer {
     <img src="ハートフィールド.png" autoplay muted loop>
 </div>
 
-<div class="grid">
+<div class="grid food">
     <div class="card wide">
         <img src="レストラン.jpg">
         <h3>レストラン</h3>
