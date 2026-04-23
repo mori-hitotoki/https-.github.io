@@ -261,19 +261,20 @@ footer {
 
     /* グリッド → 縦並び */
     .grid {
-       flex-direction: row;
-       flex-wrap: wrap;
+       display:grid;
+       grid-template-columns: repeat(2, 1fr);
        gap:10px;
     }
 
     .grid.col4 {
-        flex-direction: column;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* ←2列にする */
+        gap: 10px;
     }
 
     /* カード全部1列 */
-    .card {
-        width: calc(50% - 10px); /* ←2列 */
+    .grid.col4.card {
+        width: 100%; /* ←2列 */
     }
     .card p {
         display: none; /* 説明文消す */
@@ -310,6 +311,11 @@ footer {
     /* タイトル余白 */
     .title01, .title02, .title03 {
         margin: 10px 0;
+    }
+
+    .hitotoki img {
+        width: 100%;     /* ←横いっぱいにする */
+        height: auto;    /* ←比率維持（重要） */
     }
 }
 
