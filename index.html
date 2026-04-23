@@ -6,6 +6,7 @@
 <title>森のひとときキャンプ場</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
 
 <style>
 body {
@@ -241,6 +242,24 @@ footer {
     color: #777;
 }
 
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  width: 90%;
+  max-height: 80vh;
+  object-fit: contain;
+  touch-action: pan-y; /* スクロール干渉防止 */
+}
+
+.modalSwiper {
+  width: 90%;
+  max-width: 900px;
+}
+
 /* スマホ対応 */
 @media (max-width: 768px) {
 
@@ -323,11 +342,37 @@ footer {
     }
 }
 
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal img {
+  width: 90%;
+  max-height: 80vh;
+  object-fit: contain;
+}
+
 </style>
-</head>
+
 
 <body>
-
+<div class="modal" id="imageModal">
+  <div class="swiper modalSwiper">
+    <div class="swiper-wrapper"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+</div>
 <div class="wrapper">
 
 <header>
@@ -363,7 +408,9 @@ footer {
 
 <div class="grid">
     <div class="card">
-        <img src="コテージ.jpg">
+        <img src="コテージ.jpg" data-type="cottage">
+        <img src="コテージ2.jpg" data-type="cottage"style="display:none;">
+	<img src="コテージ3.jpg" data-type="cottage"style="display:none;">
         <h3>コテージ</h3>
         <p>初心者でも安心の設備。</p>
     </div>
@@ -418,7 +465,7 @@ footer {
     </div>	
 
 </div>
-
+ 
 <div class="title02">
         <h3>🍚---朝食・ご夕食---🍚</h3>
         <p>森のひとときで贅沢を</p>
@@ -594,6 +641,74 @@ video.addEventListener("click", () => {
         video.webkitEnterFullscreen(); // iPhone対応
     }
 });
+
+
+const modal = document.getElementById("imageModal");
+const wrapper = document.querySelector(".modal .swiper-wrapper");
+
+let modalSwiper;
+
+// 画像クリック
+document.querySelectorAll('.card img').forEach((img) => {
+
+  img.addEventListener('click', () => {
+
+    const type = img.dataset.type;
+
+    let groupImages;
+    if (type) {
+      groupImages = document.querySelectorAll(`img[data-type="${type}"]`);
+    } else {
+      groupImages = [img];
+    }
+
+    wrapper.innerHTML = "";
+
+    groupImages.forEach((i) => {
+      const slide = document.createElement("div");
+      slide.className = "swiper-slide";
+
+      const image = document.createElement("img");
+      image.src = i.src;
+
+      slide.appendChild(image);
+      wrapper.appendChild(slide);
+    });
+
+    modal.style.display = "flex";
+
+    if (modalSwiper) {
+      modalSwiper.destroy(true, true);
+    }
+
+    modalSwiper = new Swiper('.modalSwiper', {
+      slidesPerView: 1,
+      allowTouchMove: true,
+      speed: 400,
+
+      navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+});
+
+    const startIndex = Array.from(groupImages).indexOf(img);
+    modalSwiper.slideTo(startIndex);
+  });
+
+});
+
+// ✅ これは外に出す（ここ超重要）
+modal.addEventListener('click', (e) => {
+  if (
+    e.target.closest('.swiper-slide') ||
+    e.target.closest('.swiper-button-next') ||
+    e.target.closest('.swiper-button-prev')
+  ) return;
+    modal.style.display = "none";
+});
+
+
 
 </script>
 </body>
