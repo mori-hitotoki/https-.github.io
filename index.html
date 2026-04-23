@@ -271,6 +271,7 @@ footer {
     /* カード全部1列 */
     .card {
         width: 100%;
+        cursor:pointer;
     }
     .card p {
         display: none; /* 説明文消す */
@@ -283,7 +284,10 @@ footer {
     .card.wide {
         width: 100%;
     }
-
+    .card img {
+        height: 90px;
+        object-fit: cover;
+    }
     /* QRコード */
     .qr {
         width: 100%;
