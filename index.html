@@ -240,6 +240,68 @@ footer {
     font-size: 12px;
     color: #777;
 }
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+
+    .wrapper {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 24px;
+        letter-spacing: 2px;
+    }
+
+    /* 画像・動画 */
+    .hero video {
+        height: 220px;
+    }
+
+    /* グリッド → 縦並び */
+    .grid {
+        flex-direction: row;
+        flex-wrap:wrap;
+    }
+
+    .grid.col4 {
+        flex-direction: row;
+        flex-wrap:wrap;
+    }
+
+    /* カード全部1列 */
+    .card {
+        width: calc(33.333% - 10px); /* ←3列維持 */
+    }
+
+    .card.wide {
+        width: 100%;
+    }
+
+    /* QRコード */
+    .qr {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .qr img {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* 下部 */
+    .bottom {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* タイトル余白 */
+    .title01, .title02, .title03 {
+        margin: 10px 0;
+    }
+}
+
 </style>
 </head>
 
