@@ -342,7 +342,8 @@ footer {
 
 <!-- メイン画像 -->
 <div class="hero">
-    <video src="Movie.mp4" autoplay muted loop playsinline></video>
+    <video id="mainVideo" autoplay muted loop playsinline>
+    <source src="Movie.mp4" type="video/mp4">
 </div>
 
 <!-- キャッチ -->
@@ -564,6 +565,7 @@ footer {
 </footer>
 
 </div>
+
 <script>
 const cards = document.querySelectorAll('.card');
 
@@ -582,6 +584,17 @@ const observer = new IntersectionObserver((entries) => {
 cards.forEach(card => {
   observer.observe(card);
 });
+
+const video = document.getElementById("mainVideo");
+
+video.addEventListener("click", () => {
+    if (video.requestFullscreen) {
+        video.requestFullscreen();
+    } else if (video.webkitEnterFullscreen) {
+        video.webkitEnterFullscreen(); // iPhone対応
+    }
+});
+
 </script>
 </body>
 </html>
