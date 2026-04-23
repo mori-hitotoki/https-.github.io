@@ -90,6 +90,15 @@ header p {
     margin: 20px 0;
 }
 
+.title02 {
+    text-align: center;
+    margin: 20px 0;
+}
+.title03 {
+    text-align: center;
+    margin: 20px 0;
+}
+
 /* メイン画像 */
 .hero video {
     width: 100%;
@@ -118,6 +127,15 @@ header p {
 .grid {
     display: flex;
     flex-wrap: wrap;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+/* 4列にしたい時だけ */
+.grid.col4 {
+    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: nowrap;
     gap: 20px;
     margin: 30px 0;
 }
@@ -151,6 +169,11 @@ header p {
 .card p {
     font-size: 13px;
     text-align: center;
+}
+
+/* 2列にしたい時だけ追加 */
+.card.wide {
+    width: calc(50% - 14px);
 }
 
 .card.show{
@@ -189,9 +212,25 @@ header p {
 }
 
 .qr {
-    width: 120px;
-    height: 120px;
-    background: #ddd;
+    display:flex;
+    gap:10px;
+    width:40%;
+}
+
+.qr img:first-child {
+    margin-right: auto;
+}
+
+.qr img {
+    width:100px;
+    height: 100px;
+}
+
+.label {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    font-size: 12px;
 }
 
 /* フッター */
@@ -209,7 +248,7 @@ footer {
 <div class="wrapper">
 
 <header>
-    <div class="hitotoki">
+<div class="hitotoki">
     <img src="森のひととき.png" autoplay muted loop>
 </div>
     <h1 class="anime active">大自然に囲まれたキャンプリゾート</h1>
@@ -296,9 +335,119 @@ footer {
 
 </div>
 
+<div class="title02">
+        <h3>🍚---朝食・ご夕食---🍚</h3>
+        <p>森のひとときで贅沢を</p>
+</div>
+
+<div class="grid">
+    <div class="card wide">
+        <img src="朝食.jpg">
+        <h3>朝食</h3>
+        <p>最高の贅沢を。</p>
+    </div>
+
+
+    <div class="card wide">
+        <img src="テイクアウト.jpg">
+        <h3>テイクアウト</h3>
+        <p>最高の贅沢を。</p>
+    </div>
+</div>
+<div class="grid col4">
+    <div class="card">
+        <img src="BBQ.jpg">
+        <h3>BBQ</h3>
+        <p>最高の贅沢を。</p>
+    </div>
+
+    <div class="card">
+        <img src="ホルモン.jpg">
+        <h3>炊きホルモン</h3>
+        <p>最高の贅沢を。</p>
+    </div>
+
+    <div class="card">
+        <img src="海鮮BBQ.jpg">
+        <h3>海鮮BBQ</h3>
+        <p>自然に囲まれた開放的な空間。</p>
+    </div>
+
+    <div class="card">
+        <img src="満腹BBQ.jpg">
+        <h3>満腹BBQ</h3>
+        <p>自然に囲まれた開放的な空間。</p>
+    </div>
+</div>
+
+<div class="title03">
+<h3>🏠---共有設備---🏠</h3>
+</div>
+
+<div class="grid">
+    <div class="card">
+        <img src="管理棟.jpg">
+        <h3>管理棟</h3>
+        <p>チェックインはこちらへ</p>
+    </div>
+
+
+    <div class="card">
+        <img src="売店.jpg">
+        <h3>売店</h3>
+        <p>管理棟内にございます。</p>
+    </div>
+    
+    <div class="card">
+        <img src="炊事棟.jpg">
+        <h3>炊事棟</h3>
+        <p>中にシャワールームもございます。</p>
+    </div>
+
+    <div class="card">
+        <img src="風呂.jpg">
+        <h3>大浴場</h3>
+        <p>管理棟内にございます。</p>
+    </div>
+
+    <div class="card">
+        <img src="広場.jpg">
+        <h3>芝生広場</h3>
+        <p>ここでイベント等実施するこもあります。</p>
+    </div>
+    <div class="card">
+        <img src="ドッグラン.jpg">
+        <h3>共用ドッグラン</h3>
+        <p>ワンちゃんとご一緒に</p>
+    </div>
+</div>
+
+<div class="title03">
+    <h3>──＊＊＊　ランチ利用　＊＊＊──</h3>
+</div>
+
+<div class="hitotoki">
+    <img src="ハートフィールド.png" autoplay muted loop>
+</div>
+
+<div class="grid">
+    <div class="card wide">
+        <img src="レストラン.jpg">
+        <h3>レストラン</h3>
+        <p>営業時間　11:30～14:00(L.O 13:30)※火曜日定休日</p>
+    </div>
+
+
+    <div class="card wide">
+        <img src="テラス.jpg">
+        <h3>テラス利用</h3>
+        <p>営業時間　11:00～20:00火曜日定休日　10日前完全予約制</p>
+    </div>
+</div>
+
 <div class="divider"></div>
 
-<!-- 施設情報 -->
+<!-- 施設情報
 <div class="info">
     <h2>施設案内</h2>
     <ul>
@@ -308,24 +457,27 @@ footer {
         <li>シャワー・トイレ完備</li>
     </ul>
 </div>
+-->
 
 <!-- 下部 -->
 <div class="bottom">
 
     <div class="contact">
         <strong>お問い合わせ</strong><br>
-        ☎ 012-345-6789<br>
-        info@morinohitotoki-camp.jp
+        ☎ 0795-78-9111<br>
+        hitotoki@hr-corp.jp
     </div>
 
     <div class="qr">
-        QRコード
+        <img src="QR_公式ホームページ.png">
+        <img src="公式YoutubeのQR.png">
+        <img src="公式インスタQR.png">
     </div>
 
 </div>
 
 <footer>
-    © 森のひとときキャンプ場
+    © キャンプリゾート　森のひととき
 </footer>
 
 </div>
