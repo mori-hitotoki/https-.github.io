@@ -258,8 +258,8 @@ footer {
 
 .modalSwiper {
   position:relative;
-  width: 90%;
-  height:90%;
+  width: 70%;
+  height:80%;
 }
 
 .swiper-button-next,
@@ -268,6 +268,25 @@ footer {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  color: #fff;
+  background: rgba(0,0,0,0.6);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 3000;
+}
+
+.close-btn:hover {
+  background: rgba(255,255,255,0.3);
 }
 
 /* スマホ対応 */
@@ -387,6 +406,7 @@ footer {
 
 <body>
 <div class="modal" id="imageModal">
+  <button class="close-btn">&times;</button> <!-- ←追加 -->
   <div class="swiper modalSwiper">
     <div class="swiper-wrapper"></div>
     <div class="swiper-button-prev"></div>
@@ -709,9 +729,9 @@ document.querySelectorAll('.card img').forEach((img) => {
 
     modal.style.display = "flex";
 
-    if (modalSwiper) {
-      modalSwiper.destroy(true, true);
-    }
+    //if (modalSwiper) {
+      //modalSwiper.destroy(true, true);
+    //}
 
     modalSwiper = new Swiper('.modalSwiper', {
       slidesPerView: 1,
@@ -720,7 +740,7 @@ document.querySelectorAll('.card img').forEach((img) => {
 
       navigation: {
     nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
+    prevEl: '.swiper-button-prev', 
   },
 });
 
@@ -730,14 +750,17 @@ document.querySelectorAll('.card img').forEach((img) => {
 
 });
 
+const closeBtn = document.querySelector('.close-btn');
+
+closeBtn.addEventListener('click', () => {
+  modal.style.display = "none";
+});
+
 // ✅ これは外に出す（ここ超重要）
-modal.addEventListener('click', (e) => {
-  if (
-    e.target.closest('.swiper-slide') ||
-    e.target.closest('.swiper-button-next') ||
-    e.target.closest('.swiper-button-prev')
-  ) return;
+  modal.addEventListener('click', (e) => {
+  if (e.target === modal) {
     modal.style.display = "none";
+  }
 });
 
 
